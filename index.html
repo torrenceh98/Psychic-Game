@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Physic game</title>
+
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<h1> The Physic Game</h1>
+<h3>Guess what letter i'm thinking of</h3>
+<div id="game">
+</div>
+<script type="text/javascript">
+
+  var wins = 0
+  var lost = 0
+  var guessesLeft = 9
+  var computerChoices = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+  var userGuesses = []
+
+document.onkeyup = function(event) {
+var userGuess = event.key
+userGuesses.push(userGuess)
+
+  var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+  
+
+  if ((userGuess === computerGuess)) {
+    wins++ ;
+
+ } else {
+   guessesLeft--;
+} 
+ 
+  if ((guessesLeft === 0 )) {
+   lost++ ;
+   guessesLeft= 9
+  } 
+
+var html =
+  
+  "<h3>Won:" + wins + "</h3>" +
+  "<h3> Lost:" + lost + "</h3>" +
+  "<h3> Guesses left:" + guessesLeft +  "</h3>" +
+  "<h3> Your Guesses So Far:  " + userGuesses +   " </h3>"
+  ;
+  document.querySelector("#game").innerHTML = html;
+
+
+
+}
+
+
+
+
+</script>
+</body>
+</html> 
